@@ -47,3 +47,9 @@ end
 
 gem 'bootstrap-sass'
 gem 'simple_form'
+gem 'geocoder'
+gem 'mocha', group: :test
+
+gem "nifty-generators", :group => :development
+gem "rails_admin"
+gem 'forecast_io'

@@ -1,0 +1,36 @@
+
+<div class="container content-overlay">
+  <p>
+    <strong>Location:</strong>
+    <%= @location_data.address %>
+  </p>
+
+  <p>
+    <strong>Current Conditions:</strong>
+    <%= @forecast_data.currently.summary %>
+  </p>
+
+  <p>
+    <strong>Temperature:</strong>
+    <%= @forecast_data.currently.temperature %>
+  </p>
+
+  <p>
+    <strong>Humidity:</strong>
+    <%= @forecast_data.currently.humidity %>
+  </p>
+
+  <p>
+    <%= link_to "Edit", edit_location_path(@location_data) %> |
+    <%= link_to "Destroy", @location_data, :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to "View All", locations_path %>
+  </p>
+
+</div>
+
+<script type="text/javascript">
+  console.log('location data')
+  console.log(<%= raw @location_data.to_json %>)
+  console.log('FORECAST.io data')
+  console.log(<%= raw @forecast_data.to_json %>)
+</script>

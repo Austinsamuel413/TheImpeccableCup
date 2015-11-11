@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  resources :locations
   root 'home#index'
   get 'home/:id' => 'home#show'
   get 'sign_in' => 'sessions#new', as: :sign_in
@@ -7,5 +9,7 @@ Rails.application.routes.draw do
 
   get "/users/new" => 'users#new', as: :sign_up
   post "/users" => 'users#create', as: :users
+
+
 
 end

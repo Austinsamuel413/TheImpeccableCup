@@ -7,8 +7,31 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <span class="navbar-brand">
+            <strong>The Impeccable Cup</strong>
+          </span>
+          <span class="navbar-brand">
+            <% if @current_user %>
+              Hello, <%= @current_user.email %>
+            <% end %>
+          </span>
+          <ul class="nav navbar-nav navbar-right">
+            <% if @current_user %>
+            <li>
+              <%= link_to "Locations", locations_path %>
+            </li>
+            <li>
+              <%= link_to "Log Out", sign_out_path, method: :delete %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </div>
 
-<%= yield %>
-
+    <%= yield %>
 </body>
 </html>

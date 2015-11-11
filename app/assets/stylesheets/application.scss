@@ -1,2 +1,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "session.scss";
+
+body {
+    background-image: url("http://www.rivercitywhiskysociety.com/wp-content/uploads/2015/03/Coffee-Beans-HD-Wallpapers-for-desktop.jpg");
+    background-repeat:no-repeat;
+}
+
+.content-overlay{
+  background: rgba(255,255,255,.75)
+}
+
+label {
+  color: white;
+}
