@@ -11,25 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110215932) do
+ActiveRecord::Schema.define(version: 20151112021107) do
 
   create_table "beans", force: :cascade do |t|
     t.string   "region"
     t.string   "body"
     t.string   "acidity"
     t.string   "flavor"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "cups", force: :cascade do |t|
-    t.string   "name"
-    t.string   "region"
-    t.string   "body"
-    t.string   "acidity"
-    t.string   "flavor"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "weather_type_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -41,8 +32,10 @@ ActiveRecord::Schema.define(version: 20151110215932) do
   end
 
   create_table "moods", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "name"
+    t.string   "description"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,6 +44,18 @@ ActiveRecord::Schema.define(version: 20151110215932) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "weather_types", force: :cascade do |t|
+    t.string   "description"
+    t.string   "summary"
+    t.integer  "max_temp"
+    t.integer  "min_temp"
+    t.decimal  "max_humidity"
+    t.decimal  "min_humidity"
+    t.integer  "mood_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "weathers", force: :cascade do |t|

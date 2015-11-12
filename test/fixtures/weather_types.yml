@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  summary: MyString
+  max_temp: 1
+  min_temp: 1
+  max_humidity: 9.99
+  min_humidity: 9.99
+
+two:
+  description: MyString
+  summary: MyString
+  max_temp: 1
+  min_temp: 1
+  max_humidity: 9.99
+  min_humidity: 9.99
