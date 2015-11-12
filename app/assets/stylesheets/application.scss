@@ -5,6 +5,8 @@
 body {
     background-image: url("http://www.rivercitywhiskysociety.com/wp-content/uploads/2015/03/Coffee-Beans-HD-Wallpapers-for-desktop.jpg");
     background-repeat:no-repeat;
+    background-size:cover;
+    font-size: 40px;
 }
 
 .content-overlay{
@@ -13,4 +15,9 @@ body {
 
 label {
   color: white;
+}
+
+.well{
+background-color: rgba(0,0,0,0.7);
+border-color: rgba(192,192,192,0.7);
 }

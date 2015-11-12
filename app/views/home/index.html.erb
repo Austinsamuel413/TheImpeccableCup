@@ -1,11 +1,15 @@
-<% if !@current_user.present? %>
-  <h1>The Impeccable Cup</h1>
-<% end %>
+<div class="container well">
 
-<% if @current_user.present? %>
-  <h1>Thank you for signing in with The Impeccable Cup!</h1>
-<% end %>
+  <% if !@current_user.present? %>
+    <h1>The Impeccable Cup</h1>
+  <% end %>
 
-<% if @current_user.present? %>
-  <h1>Please Add Your Location</h1>
-<% end %>
+  <% if @current_user.present? %>
+    <h1>Thank you for signing in with The Impeccable Cup!</h1>
+  <% end %>
+
+  <% if @current_user.present? %>
+    <h1>Please Add Your Location</h1>
+  <% end %>
+  <%= link_to "New Location", "/locations/new", class: "btn btn-primary"%>
+</div>
