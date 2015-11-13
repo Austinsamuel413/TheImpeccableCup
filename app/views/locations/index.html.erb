@@ -1,18 +1,10 @@
 
 <div class="container content-overlay">
-  <table>
-    <tr>
-      <th>Name</th>
-    </tr>
-    <% for location in @locations %>
-      <tr>
-        <td><%= location.address %></td>
-        <td><%= link_to "Show", location %></td>
-        
-        
-      </tr>
-    <% end %>
-  </table>
+  <h3>Your Locations</h3>
+  <% for location in @locations %>
+      <%= link_to location.address, location, {class: 'btn btn-warning btn-lg'}%> |
+  <% end %>
 
-  <p><%= link_to "New Location", new_location_path %></p>
+  <h3>Add a Location to your List!</h3>
+  <p><%= link_to "+ New Location", new_location_path , {class: 'btn btn-success btn-lg'} %></p>
 </div>

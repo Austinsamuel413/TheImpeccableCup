@@ -9,12 +9,52 @@ class LocationsController < ApplicationController
 
   def show
     @location_data = Location.find_by(id: params[:id])
-    puts "&&-Locationdata...show-xx"*44
-    pp @location_data
-    @forecast_data = ForecastIO.forecast(37.8267, -122.423)
-    # pp "---*WeatherData*----"*50
-    # pp @forecast_data
-    #  WeatherType.where("min_temp > ?", 40).where("min_humidity < ? ", 0.8)
+    @location_data
+    @forecast_data = ForecastIO.forecast("#{@location_data.latitude}", "#{@location_data.longitude}")
+    @sample = Bean.all.sample
+
+    # 1) Take the forecast data & identify the weather types
+    # 2) Find beans associated with weather type
+    # BONUS) Use Weathertype to find mood
+
+    fc = @forecast_data
+    wthr_types_list = WeatherType.where(
+        "min_temp < ?", fc.currently.temperature
+
+      ).where(
+        "max_temp > ? ", fc.currently.temperature
+
+      ).where(
+        "min_humidity < ?", fc.currently.humidity
+
+      ).where(
+        "max_humidity > ? ", fc.currently.humidity
+      )
+
+      puts "^^--))"*20
+      pp wthr_types_list
+
+    # if @forecast_data.currently.temperature > 80
+    #    @profile = Bean.all.where(region: ["Brazilian", "Colombian", "Costa Rican", "Ethiopian", "Guatemalan"]).all.sample
+    # elsif @forecast_data.currently.temperature < 40
+    #    @profile = Bean.all.where(region: ["Haitian", "Hawaiian Kona", "Jamaican Blue Mountain", "Java", "Kenyan"]).all.sample
+    # else
+    #    @profile = Bean.all.where(region: ["Mexican", "Nicaraguan", "Sumatran", "Tanzanian ", "Yemeni"])
+    # end
+
+    @reccommendations = []
+    wthr_types_list.each {|wt|
+      b = Bean.find_by(id: wt.bean_id).as_json
+
+      b["wt_description"] = wt.description
+      b["mood_name"] = Mood.find_by(id: wt.mood_id).name
+      @reccommendations.push(b)
+    }
+
+
+
+
+
   end
 
   def new
@@ -58,4 +98,15 @@ end
 #
 # fc = ForecastIO.forecast(«lat», «long»)
 # Query
-# wt_temps_identified = WeatherType.where("min_temp > ?", fc.currently.temperature ).where("max_temp < ? ", fc.currenlty.temperature).where("min_humidity > ?", fc.currently.humidity ).where("max_humidity < ? ", fc.currently.humidity)
+# wthr_types_identified = WeatherType.where(
+#     "min_temp > ?", fc.currently.temperature
+#
+#   ).where(
+#     "max_temp < ? ", fc.currently.temperature
+#
+#   ).where(
+#     "min_humidity > ?", fc.currently.humidity
+#
+#   ).where(
+#     "max_humidity < ? ", fc.currently.humidity
+#   )

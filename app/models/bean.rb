@@ -1,3 +1,3 @@
 class Bean < ActiveRecord::Base
-  belongs_to :weather_type
+  has_many :weather_types
 end

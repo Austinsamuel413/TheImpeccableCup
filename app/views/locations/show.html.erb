@@ -1,29 +1,68 @@
+<div class="container">
 
-<div class="container content-overlay">
-  <p>
-    <strong>Location:</strong>
-    <%= @location_data.address %>
-  </p>
+  <div class="panel">
+    <div class="panel-heading text-center">
+      <p>
+        <%= @location_data.address %>
+      </p>
+    </div>
+    <div class="panel-body">
+      <p>
+        <small>Current Conditions:</small>
+        <%= @forecast_data.currently.summary %>
+      </p>
 
-  <p>
-    <strong>Current Conditions:</strong>
-    <%= @forecast_data.currently.summary %>
-  </p>
+      <p>
+        <small>Temperature:</small>
+        <%= @forecast_data.currently.temperature %>
+      </p>
 
-  <p>
-    <strong>Temperature:</strong>
-    <%= @forecast_data.currently.temperature %>
-  </p>
+      <p>
+        <small>Humidity:</small>
+        <%= @forecast_data.currently.humidity %>
+      </p>
+    </div>
+  </div>
 
-  <p>
-    <strong>Humidity:</strong>
-    <%= @forecast_data.currently.humidity %>
-  </p>
 
-  <p>
-    <%= link_to "Edit", edit_location_path(@location_data) %> |
-    <%= link_to "Destroy", @location_data, :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to "View All", locations_path %>
+
+
+
+
+  <table class="table coffee-app">
+
+    <thead>
+      <tr>
+        <th class="weather-type"><h4>Weather Type?</h4></th>
+        <th class="mood">
+          In case you're feelin'
+        </th>
+        <th class="coffee">Region </th>
+        <th class="coffee"> Body</th>
+        <th class="coffee">Acidity </th>
+        <th class="coffee">Flavor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reccommendations.each { |r|%>
+      <tr>
+          <td class="weather-type"> <%= r["wt_description"] %> </td>
+          <td class="mood"><%=r["mood_name"]%> </td>
+          <td class="coffee"> <%= r["region"] %></td>
+          <td class="coffee"><%= r["body"] %></td>
+          <td class="coffee"><%= r["acidity"] %></td>
+          <td class="coffee"> <%= r["flavor"] %></td>
+      </tr>
+
+      <%}%>
+    </tbody>
+
+  </table>
+
+  <p class="text-right">
+    <!-- <%= link_to "Edit", edit_location_path(@location_data) %> | -->
+    <%= link_to "- Remove Location", @location_data, :confirm => 'Are you sure?', :method => :delete, class: "btn btn-danger" %>
+    <!-- <%= link_to "View All", locations_path %> -->
   </p>
 
 </div>

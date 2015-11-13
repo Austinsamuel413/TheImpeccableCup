@@ -6,7 +6,7 @@ body {
     background-image: url("http://www.rivercitywhiskysociety.com/wp-content/uploads/2015/03/Coffee-Beans-HD-Wallpapers-for-desktop.jpg");
     background-repeat:no-repeat;
     background-size:cover;
-    font-size: 40px;
+    font-size: 32px;
 }
 
 .content-overlay{
@@ -20,4 +20,30 @@ label {
 .well{
 background-color: rgba(0,0,0,0.7);
 border-color: rgba(192,192,192,0.7);
+}
+
+.panel{
+  .panel-heading{
+    background: #2c3e50;
+    color: #fff;
+  }
+  .panel-body{
+    font-size: 16px;
+  }
+}
+
+.coffee-app{
+  font-size: 21px;
+
+  thead{
+    .weather-type{background: #3498db;}
+    .mood{background: #9b59b6;}
+    .coffee{background: #d35400;}
+  }
+  tbody{
+    .weather-type{background: lighten(#3498db,20%);}
+    .mood{background: lighten(#9b59b6,20%);}
+    .coffee{background: lighten(#d35400,20%);}
+  }
+
 }

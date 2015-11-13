@@ -11,16 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112021107) do
+ActiveRecord::Schema.define(version: 20151113023511) do
 
   create_table "beans", force: :cascade do |t|
     t.string   "region"
     t.string   "body"
     t.string   "acidity"
     t.string   "flavor"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "weather_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "locations", force: :cascade do |t|
@@ -51,11 +50,12 @@ ActiveRecord::Schema.define(version: 20151112021107) do
     t.string   "summary"
     t.integer  "max_temp"
     t.integer  "min_temp"
-    t.decimal  "max_humidity"
-    t.decimal  "min_humidity"
+    t.float    "max_humidity"
+    t.float    "min_humidity"
     t.integer  "mood_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "bean_id"
   end
 
   create_table "weathers", force: :cascade do |t|
